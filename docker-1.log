@@ -1,0 +1,7 @@
+REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
+skipufo/ubuntu-tmp-file   latest              c4864ab19ed7        18 seconds ago      115MB
+ubuntu                    16.04               e13f3d529b1a        6 days ago          115MB
+hello-world               latest              2cb0d9787c4d        12 days ago         1.85kB
+
+Образ содержит описание из чего состоит образ (ОС, архитектура, диски и пр.)
+Контейнер дополнительно к информации образа содержит информацию о текущем state, директориях вывода логов, сетевых настройках и пр.
