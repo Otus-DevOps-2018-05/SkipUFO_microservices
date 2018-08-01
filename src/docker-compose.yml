@@ -5,30 +5,38 @@ services:
     volumes:
       - post_db:/data/db
     networks:
-      - reddit-backend
-    network-alias: db
+      reddit-backend: 
+        aliases: 
+          - db
   ui:    
     build: ./ui
-    image: ${USERNAME}/ui:${UI_VERSION}
+    image: '${USERNAME}/ui:${UI_VERSION}'
     ports:
-      - ${PUBLISH_PORT}
+      - '${PORT_HOST}:${PORT_CONTAINER}/tcp'
     networks:
-      - reddit-frontend
-    network-alias: ui
+      reddit-frontend: 
+        aliases: 
+          - ui
   post:    
     build: ./post-py
     image: ${USERNAME}/post:${POST_VERSION}
     networks:
-      - reddit-frontend
-      - reddit-backend
-    network-alias: post
+      reddit-frontend: 
+        aliases: 
+          - post
+      reddit-backend: 
+        aliases: 
+          - post
   comment:    
     build: ./comment
     image: ${USERNAME}/comment:${COMMENT_VERSION}
     networks:
-      - reddit-frontend
-      - reddit-backend
-    network-alias: comment
+      reddit-frontend: 
+        aliases: 
+          - comment
+      reddit-backend: 
+        aliases: 
+          - comment
 
 volumes:
   post_db:
