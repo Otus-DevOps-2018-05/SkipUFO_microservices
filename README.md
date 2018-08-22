@@ -7,6 +7,7 @@ SkipUFO Microservices repository
 - [Homework-14: Docker-3](#homework-14-docker-3)
 - [Homework-15: Docker-4](#homework-15-docker-4)
 - [Homework-16: Gitlab-CI-1](#homework-16-gitlab-1)
+- [Homework-17: Gitlab-CI-2](#homework-17-gitlab-2)
 
 # Homework-12: Docker-1
 ## 1.1 Что было сделано
@@ -152,3 +153,13 @@ docker exec -it gitlab-runner gitlab-runner register
   curl --request POST "https://<gitlab-ci-IP>/api/v4/runners" --form "token=<TOKEN>" --form "description=test-1-20150125-test" --form "tag_list=ruby,mysql,tag1,tag2"
  ```
 - Для задания - интеграция со Slack - https://singrisoft.slack.com/messages/CCCB9L69X
+
+# Homework-17: Gitlab-CI-2
+## 1.1 Что было сделано
+- Подключение Runner из другого проекта (сначала устанавливаем свойство Runner Lock to current projects - false), затем в настройках другого проекта в разделе Specific Runners жмем Enable Runner for Project
+- Доработаны jobs для использования статического и динамического environment
+
+## 1.2 В задании со *
+- Добавлена кнопка stop environment
+## 1.3 В задании с **
+- Пока ничего не сделано. Нужно разобраться со сборкой контейнеров
