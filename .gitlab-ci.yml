@@ -31,13 +31,29 @@ test_integration_job:
   script:
     - echo 'Testing 2'
 
-deploy_dev_job:
+branch review:
   stage: review
   script:
-    - echo 'Deploy'
+    - echo "Deploy to $CI_ENVIRONMENT_SLUG"
   environment: 
-    name: dev
-    url: http://dev.example.com
+    name: branch/$CI_COMMIT_REF_NAME
+    url: http://$CI_ENVIRONMENT_SLUG.example.com
+  only: 
+    - branches
+  on_stop: stop_review  
+  except: 
+    - master
+
+stop_review:
+  stage: review
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Remove review app"
+  when: manual
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    action: stop
 
 staging:
   stage: stage
