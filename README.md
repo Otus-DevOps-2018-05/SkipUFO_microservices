@@ -6,6 +6,7 @@ SkipUFO Microservices repository
 - [Homework-13: Docker-2](#homework-13-docker-2)
 - [Homework-14: Docker-3](#homework-14-docker-3)
 - [Homework-15: Docker-4](#homework-15-docker-4)
+- [Homework-16: Gitlab-CI-1](#homework-16-gitlab-1)
 
 # Homework-12: Docker-1
 ## 1.1 Что было сделано
@@ -104,3 +105,50 @@ services:
 - Изучена возможность изменения базового имени запускаемого контейнера: использование environment variable COMPOSE_PROJECT_NAME, или запуск docker-compose с параметром -p
 - Добавлен docker-compose.override.yml, с переопределенным запуском puma (переопределен блок command)
 - Со вторым заданием (Изменять код каждого из приложений, не выполняя сборку образа) - в общем случае это делать плохо (в нашем примере там руби-код, и изменение кода может за собой потянуть изменение набора гемов, необходимых для работы, если добавить в CMD bundle install, то это увеличит время от запуска контейнера до начала работы приложения в контейнере), но это можно сделать, например, при помощи маппинга volume в $APP_HOME
+
+# Homework-12: Docker-1
+## 1.1 Что было сделано
+- Установлен docker (sudo apt install docker.io)
+- Добавлены права для теущего пользователя (sudo usermod -a -G docker $USER)
+- Запущен образ ubuntu-16.04 в него добавлен файл /tmp/file
+- Собранный образ добавлен в локальный репозиторий образов
+
+## 1.2 В задании со *
+- Сравнены выводы команды inspect на образе и контейнере
+
+# Homework-16: Gitlab-CI-1
+## 1.1 Что было сделано
+- Запущен omnibus образ GitlabCI. Использовался docker-compose.yml
+```
+web:
+  image: 'gitlab/gitlab-ce:latest'
+  restart: always
+  hostname: 'gitlab.example.com'
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'http://<YOUR-VM-IP>'
+  ports:
+    - '80:80'
+    - '443:443'
+    - '2222:22'
+  volumes:
+    - '/srv/gitlab/config:/etc/gitlab'
+    - '/srv/gitlab/logs:/var/log/gitlab'
+    - '/srv/gitlab/data:/var/opt/gitlab'
+```
+- Запущен и зарегистрирован Runner 
+```
+docker run -d --name gitlab-runner --restart always \
+-v /srv/gitlab-runner/config:/etc/gitlab-runner \
+-v /var/run/docker.sock:/var/run/docker.sock \
+gitlab/gitlab-runner:latest 
+docker exec -it gitlab-runner gitlab-runner register
+```
+- Изучены возможности по добавлению новых stages, переменных и пр. в .gitlab-ci.yml
+
+## 1.2 В задании со *
+- Для задания - автоматизация добавления раннеров - https://docs.gitlab.com/ee/api/runners.html
+ ```
+  curl --request POST "https://<gitlab-ci-IP>/api/v4/runners" --form "token=<TOKEN>" --form "description=test-1-20150125-test" --form "tag_list=ruby,mysql,tag1,tag2"
+ ```
+- Для задания - интеграция со Slack - https://singrisoft.slack.com/messages/CCCB9L69X
