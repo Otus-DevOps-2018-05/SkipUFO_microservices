@@ -52,7 +52,7 @@ stop_review:
     - echo "Remove review app"
   when: manual
   environment:
-    name: review/$CI_COMMIT_REF_NAME
+    name: branch/$CI_COMMIT_REF_NAME
     action: stop
 
 staging:
