@@ -175,6 +175,6 @@ docker exec -it gitlab-runner gitlab-runner register
  - https://hub.docker.com/r/skipufo/post/
  - https://hub.docker.com/r/skipufo/comment/
  - https://hub.docker.com/r/skipufo/prometheus/
- 
+
 ## 1.2 В задании со *
 - Пока ничего не сделано
