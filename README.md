@@ -1198,3 +1198,15 @@ done
 
 ## 1.2 В задании со *
 - Пока ничего не сделано
+
+# Homework-22: Kubernetes-2
+## 1.1 Что было сделано
+ - Установлен minikube
+```
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.27.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+```
+ - Изучено развертывание сервиса reddit при помощи minikube, использованы Service для пробрасывания сети между контейнерами, mongo настроен с persistent storage
+ - Изучено как развертывается GKE (ВАЖНО!! Лучше всего указывать в image - имя image вместе с тегом)
+ ## 1.2 В задании со *
+ - Пока ничего не сделано
+ 
