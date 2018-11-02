@@ -8,6 +8,7 @@ SkipUFO Microservices repository
 - [Homework-15: Docker-4](#homework-15-docker-4)
 - [Homework-16: Gitlab-CI-1](#homework-16-gitlab-1)
 - [Homework-17: Gitlab-CI-2](#homework-17-gitlab-2)
+- [Homework-18: Monitoring-1](#homework-18-monitoring-1)
 
 # Homework-12: Docker-1
 ## 1.1 Что было сделано
@@ -163,3 +164,17 @@ docker exec -it gitlab-runner gitlab-runner register
 - Добавлена кнопка stop environment
 ## 1.3 В задании с **
 - Пока ничего не сделано. Нужно разобраться со сборкой контейнеров
+
+# Homework-18: Monitoring-1
+## 1.1 Что было сделано
+- Создан docker-образ Prometheus с файлом конфигурации
+- Была изучена работа с метриками (добавление, удаление)
+- Был изучен интерфейс и возможности Prometheus
+- Ссылки на docker образы: 
+ - https://hub.docker.com/r/skipufo/ui/
+ - https://hub.docker.com/r/skipufo/post/
+ - https://hub.docker.com/r/skipufo/comment/
+ - https://hub.docker.com/r/skipufo/prometheus/
+
+## 1.2 В задании со *
+- Пока ничего не сделано
