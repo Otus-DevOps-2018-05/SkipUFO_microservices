@@ -17,7 +17,7 @@ services:
       - COMMENT_SERVICE_HOST=comment
       - COMMENT_SERVICE_PORT=9292
     ports:
-       "9292:9292"
+      - "9292:9292"
     depends_on:
       - post
     logging:
